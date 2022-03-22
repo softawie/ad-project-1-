@@ -1,7 +1,8 @@
 import express from 'express'
 import routes from './routes'
 import logger from './utiles/logger'
-const app = express()
+
+export const app = express()
 
 // for Route with middleware logger
 app.use('/',logger, routes)
