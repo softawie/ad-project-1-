@@ -3,15 +3,15 @@ import path from 'path';
 import { Data } from '../../constants';
 import { catchError } from '../../helper';
 
-const Images = express.Router();
+const Images = express.Router()
 
 Images.get('/', (req, res) => {
-  const fileName = req.query.fileName as string;
-  const source = Data.includes(fileName);
+  const filename = req.query.filename as string;
+  const source = Data.includes(filename);
 
-  catchError({ res, fileName, source });
+  catchError({ res, filename, source });
 
-  res.sendFile(path.resolve('./') + `/images/${fileName}.jpg`);
+  res.sendFile(path.resolve('./assets') + `/images/${filename}.jpg`);
 })
 
 export default Images;

@@ -1,10 +1,10 @@
 import express from 'express'
 import routes from './routes'
-
+import logger from './utiles/logger'
 const app = express()
 
-// for Route
-app.use('/', routes)
+// for Route with middleware logger
+app.use('/',logger, routes)
 
 // using express in server
 const port = 3000

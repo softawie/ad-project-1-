@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const constants_1 = require("../../constants");
 const second = express_1.default.Router();
 second.get('/', (req, res) => {
-    res.send('my second route !!!');
+    res.send(`${constants_1.Data.toString()}`);
 });
 exports.default = second;

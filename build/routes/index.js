@@ -9,6 +9,6 @@ const routes = express_1.default.Router();
 routes.get('/', (req, res) => {
     res.send('here is my Main Routes !');
 });
-routes.use('/images', api_1.Images);
-routes.use('/Second', api_1.Second);
+routes.use('/api/images', api_1.Images);
+routes.use('/images', api_1.Second);
 exports.default = routes;

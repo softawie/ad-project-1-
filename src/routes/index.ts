@@ -1,12 +1,12 @@
-import express from 'express'
-import { Images, Second } from './api'
-const routes = express.Router()
+import express from 'express';
+import { Images, List } from './api';
+const routes = express.Router();
 
 routes.get('/', (req, res) => {
   res.send('here is my Main Routes !')
 })
 
-routes.use('/images', Images)
-routes.use('/Second', Second)
+routes.use('/api/images', Images);
+routes.use('/images', List);
 
-export default routes
+export default routes;

@@ -1,18 +1,20 @@
+import path from 'path';
+
 export function catchError({
   res,
-  fileName,
+  filename,
   source
 }: {
   res: string | any
-  fileName: string
+  filename: string
   source: boolean
 }) {
-  // const fileName  = req.query.fileName as string;
-  // const source = Data.includes(fileName);
-  if (fileName === undefined) {
-    return res.status(400).send('bad req 400')
+  // const filename  = req.query.filename as string;
+  // const source = Data.includes(filename);
+  if (filename === undefined) {
+    return res.sendFile(path.resolve('.src/utiles')+'/Error404.html');
   }
   if (source === false) {
-    return res.status(500).send('no resourse req 500')
+    return res.status(500).send('no resourse req 500');
   }
 }

@@ -9,9 +9,9 @@ const constants_1 = require("../../constants");
 const helper_1 = require("../../helper");
 const Images = express_1.default.Router();
 Images.get('/', (req, res) => {
-    const fileName = req.query.fileName;
-    const source = constants_1.Data.includes(fileName);
-    (0, helper_1.catchError)({ res, fileName, source });
-    res.send(path_1.default.resolve('./') + `../../images/${fileName}.jpg`);
+    const filename = req.query.filename;
+    const source = constants_1.Data.includes(filename);
+    (0, helper_1.catchError)({ res, filename, source });
+    res.sendFile(path_1.default.resolve('./') + `/images/${filename}.jpg`);
 });
 exports.default = Images;
