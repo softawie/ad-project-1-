@@ -6,7 +6,7 @@ routes.get('/', (req, res) => {
   res.send('here is my Main Routes !')
 })
 
-routes.use('/api/images', Images);
-routes.use('/images', List);
+routes.use('/thump', Images);
+routes.use('/list/images', List);
 
 export default routes;

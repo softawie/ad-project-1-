@@ -5,7 +5,7 @@ import logger from './utiles/logger'
 export const app = express()
 
 // for Route with middleware logger
-app.use('/',logger, routes)
+app.use('/api',logger, routes)
 
 // using express in server
 const port = 3000

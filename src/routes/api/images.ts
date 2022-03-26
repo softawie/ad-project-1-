@@ -1,17 +1,36 @@
 import express from 'express';
 import path from 'path';
 import { Data } from '../../constants';
-import { catchError } from '../../helper';
+import { checkError ,resizeImages,cacheFiles } from '../../helper';
 
 const Images = express.Router()
 
-Images.get('/', (req, res) => {
-  const filename = req.query.filename as string;
-  const source = Data.includes(filename);
+Images.get('/', async (req, res) => {
+  try {
+    const filename = req.query.filename as string;
+    const width = req.query.width?.toString() as string;
+    const height = req.query.height?.toString() as string;
+  
+    const source = Data.includes(filename);
+  
+    const input :string = path.resolve('./assets') + `/images/${filename}`
+    const output :string= path.resolve('./assets') + `/thump/${width}x${height}-${filename}.jpg`
 
-  catchError({ res, filename, source });
+        // checkError({ res, filename, source });
+        if( !cacheFiles(output) ){
+          console.log('here is input ',input)
+          return await resizeImages(input,output,width,height);
+        }
+        res.sendFile(output);
+      } catch(err){
+        console.log(err)
+      }
 
-  res.sendFile(path.resolve('./assets') + `/images/${filename}.jpg`);
+  // res.sendFile();
+  // resizeImages(input,output)
+  
+
+
 })
 
 export default Images;
