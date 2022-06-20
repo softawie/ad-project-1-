@@ -11,14 +11,18 @@ export const resize = async (req: express.Request, res: express.Response) => {
   const filename = req.query.filename
   const w: number = Number(req.query.width)
   const h: number = Number(req.query.height)
+
   const newPath = __dirname + '../../../assets/thump/'
+  console.log(newPath)
 
   const imagePath: string = path.normalize(newPath + filename + '-' + w + '-' + h + '.jpg')
   console.log(imagePath)
 
   const orgPath = __dirname + '../../../assets/images/'
+  console.log(orgPath)
 
   const originaImage: string = path.normalize(orgPath + filename)
+  console.log(originaImage)
 
   // case no image name cached
   if (!cacheFiles(originaImage)) {
@@ -40,8 +44,11 @@ export const resize = async (req: express.Request, res: express.Response) => {
 
 export const resizeImages = async (filename: string, w: number, h: number) => {
   const input = './assets/images/' + filename
-  const output = './assets/thump/' + filename
   console.log('here is input !!!!!', input)
+
+  const output = './assets/thump/' + filename
+  console.log('here is output !!!!!', output)
+
   if (w && h) {
     return await sharp(input)
       // .resize(parseInt(width), parseInt(height))

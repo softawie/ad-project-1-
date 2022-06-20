@@ -4,7 +4,7 @@ import { resize } from '../../utiles/helper'
 const Images = express.Router()
 
 Images.get('/images', resize, async (req, res) => {
-  res.send('file name got !')
+  res.send('file name  !')
   // res.sendFile();
   // resizeImages(input,output)
 })
