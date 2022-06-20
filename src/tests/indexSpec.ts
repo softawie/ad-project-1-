@@ -1,16 +1,17 @@
-import supertest from 'supertest';
+import supertest from 'supertest'
 
-import { app as APP } from '../index';
+import { app as APP } from '../index'
 
-const req = supertest(APP);
+const req = supertest(APP)
 
-describe("test  images route",()=>{
-    it("if gave  the route then and request it return 400",async()=>{
-        await req.get("/images").expect(400);
-    })
-    it("if gave  the route then and request it return 404",async()=>{
-        await req.get("/api/images?filename=blabla..").expect(404);
-    })
-    
+describe('test  images route', () => {
+  it('if gave  the route  and request it return 200 ', async () => {
+    await req.get('/api').expect(200)
+  })
+  it('if gave  the route  and request it return 200 that mean list ok', async () => {
+    await req.get('/api/list').expect(200)
+  })
+  it('if gave  the route  and request it return 200 mean test image ok', async () => {
+    await req.get('/api/thump/images?filename=fjord.jpg&width=800&height=900').expect(200)
+  })
 })
-
